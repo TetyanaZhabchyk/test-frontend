@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import logo from "./logo-pass-culture.svg";
 import News from "./components/News";
 import Header from "./components/Header";
+import Form from "./components/Form";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<News />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </Router>
     </div>
