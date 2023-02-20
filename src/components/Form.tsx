@@ -50,6 +50,3 @@ function Form() {
 }
 
 export default Form;
-function preventDefault() {
-  throw new Error("Function not implemented.");
-}
