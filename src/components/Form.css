@@ -5,18 +5,12 @@ form{
 }
 
 /* Css pour l'affichage des erreurs */
-
-.formData[data-error]::after {
-  content: attr(data-error);
+.formData[data-error-visible="true"] .errorMsg {
   font-size: 0.8em;
   color: #e54858;
-  text-align: right;
-  opacity: 0;
   transition: 0.3s;
 }
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
+
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
