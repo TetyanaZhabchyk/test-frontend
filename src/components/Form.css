@@ -1,7 +1,13 @@
-form{
+form {
   display: flex;
   flex-direction: column;
   margin: 50px;
+}
+
+.formData {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 /* Css pour l'affichage des erreurs */
@@ -9,6 +15,14 @@ form{
   font-size: 0.8em;
   color: #e54858;
   transition: 0.3s;
+}
+
+label { 
+  width: 100px;
+}
+
+.text-control {
+  width: 200px;
 }
 
 .formData[data-error-visible="true"] .text-control {

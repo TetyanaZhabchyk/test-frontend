@@ -1,43 +1,30 @@
+//1.should submit form (tous les champs sont valides)
+//2.should display error when title is not filled
+//3.should display error when description is not filled
+//4. should display error when no category is selected
+//5. should display error when date is not filled
+
 import * as React from "react";
 // add news
 import Form from "./Form";
 // **** Nécessaire à la librairie de test *****
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 // **** Nécessaire au action utilisateur
 import userEvent from "@testing-library/user-event";
-// on récupère le json des news
-import json from "../../public/data/news.json";
-
-//1. should display all news:
-//render le composant
-//expect compter le nombre de news
-
-//2. should display news in xxx category when user selects filter:
-//render le composant
-//utilisateur change le bouton select
-//expect compter le nombre de news
-
-//3. should display all news when user resets filter
-//render le composant
-//utilisateur change le bouton select sur une catégorie
-//utilisateur remet le bouton select sur toutes les catégories
-//expect compter le nombre de news
-
-beforeEach(() => {
-  jest.spyOn(global, "fetch").mockResolvedValue({
-    json: jest.fn().mockResolvedValue(json),
-  });
-});
-
-afterEach(() => {
-  jest.restoreAllMocks();
-});
 
 describe("Form selector", () => {
-  it("should display all lines", async () => {
-    // ***** On demande à executer la balise News
+  it("should display error when categorie is not filled", async () => {
+    // On demande à executer la balise Form
     render(<Form />);
-    // *** Le test ici c'est de chercher le tag h2 (créer par les news) ***
-    // *** Il doit y avoir 7 h2 car il y a 7 nouvelles dans le json ***
+    // l'utilisateur saisie les valeurs
+    await userEvent.type(screen.getByLabelText("Titre"), "mon titre");
+    await userEvent.type(screen.getByLabelText("Date"), "2024-01-01");
+    await userEvent.type(screen.getByLabelText("Description"), "mon titre");
+    // l'utilisateur clique sur le button envoyer
+    await userEvent.click(screen.getByRole("button"));
+    // il y a plus le message d'erreurs de la categorie
+    expect(
+      await screen.getByText("Vous devez choisir une categorie")
+    ).toBeInTheDocument();
   });
 });
