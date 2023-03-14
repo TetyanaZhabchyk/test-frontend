@@ -182,7 +182,7 @@ function Form() {
           <br />
           {errors.date && <div className="errorMsg">{errors.date}</div>}
         </div>
-        <div className="formData" data-error-visible={errors.desc !== ""}>
+        <div className={`formData${errors.date !== "" ? " error" : ""}`}>
           <label htmlFor="desc">Description</label>
           <textarea
             id="desc"

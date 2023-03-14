@@ -24,7 +24,7 @@ describe("Form selector", () => {
     await userEvent.click(screen.getByRole("button"));
     // il y a plus le message d'erreurs de la categorie
     expect(
-      await screen.getByText("Vous devez choisir une categorie")
+      screen.getByText("Vous devez choisir une categorie")
     ).toBeInTheDocument();
   });
 });

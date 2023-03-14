@@ -25,6 +25,6 @@ label {
   width: 200px;
 }
 
-.formData[data-error-visible="true"] .text-control {
+.formData.error .text-control {
   border: 2px solid #e54858;
 }
