@@ -1,11 +1,13 @@
 import * as React from "react";
 import Form from "./Form";
-// **** Nécessaire à la librairie de test *****
+// Nécessaire à la librairie de test *****
 import { render, screen, waitFor } from "@testing-library/react";
 // **** Nécessaire au action utilisateur
 import userEvent from "@testing-library/user-event";
 
 describe("Form selector", () => {
+  //verification s'il y a un et un seul objet bouton,
+  //qui a le role bouton (accessibilité)
   it("should display has a button", async () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
@@ -15,6 +17,7 @@ describe("Form selector", () => {
       expect(screen.getAllByRole("button")).toHaveLength(1);
     });
   });
+  //s'il affiche tout les champs
   it("should display has all fields", async () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
@@ -22,13 +25,13 @@ describe("Form selector", () => {
     await (() => {
       // on cherche le <input type="text"> et le textarea
       expect(screen.getAllByRole("textbox")).toHaveLength(2);
-      // on cherche le <input type="text"> et le textarea
+      // on cherche le <input type="date">
       expect(screen.getAllByRole("datebox")).toHaveLength(1);
-      // on cherche les options
+      // on cherche les options, 6 choix dans la combobox
       expect(screen.getAllByRole("option")).toHaveLength(6);
     });
   });
-
+  //envoie de tout les données dans consol, sans les msds d'erreur
   it("should submit form", async () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
@@ -96,7 +99,7 @@ describe("Form selector", () => {
     });
   });
 
-  it("should display error when description is not filled", async () => {
+  it("should display error when 'description' is not filled", async () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
 
@@ -122,7 +125,7 @@ describe("Form selector", () => {
       ).toBeInTheDocument();
     });
   });
-
+  //s'il les chaps sont vide
   it("should display error on submit without all values", async () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
