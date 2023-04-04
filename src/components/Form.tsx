@@ -137,12 +137,11 @@ function Form() {
     <main>
       <form onSubmit={handleSubmit} noValidate={true}>
         <h1>Ajouter une news</h1>
-        <div className="formData" data-error-visible={errors.title !== ""}>
+        <div className={`formData${errors.date !== "" ? " error" : ""}`}>
           <label htmlFor="titre">Titre</label>
           <input
             type="text"
             id="titre"
-            //ref={inputTitre}
             onChange={handleTitreChange}
             required
             className="text-control"
@@ -150,7 +149,7 @@ function Form() {
           <br />
           {errors.title && <div className="errorMsg">{errors.title}</div>}
         </div>
-        <div className="formData" data-error-visible={errors.cat !== ""}>
+        <div className={`formData${errors.date !== "" ? " error" : ""}`}>
           <label htmlFor="cat">Catégorie</label>
           <select
             name="cat"
@@ -169,7 +168,7 @@ function Form() {
           <br />
           {errors.cat && <div className="errorMsg">{errors.cat}</div>}
         </div>
-        <div className="formData" data-error-visible={errors.date !== ""}>
+        <div className={`formData${errors.date !== "" ? " error" : ""}`}>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -177,7 +176,6 @@ function Form() {
             onChange={handleDateChange}
             required
             className="text-control"
-            role="datebox"
           ></input>
           <br />
           {errors.date && <div className="errorMsg">{errors.date}</div>}

@@ -11,7 +11,7 @@ form {
 }
 
 /* Css pour l'affichage des erreurs */
-.formData[data-error-visible="true"] .errorMsg {
+.formData.error  .errorMsg {
   font-size: 0.8em;
   color: #e54858;
   transition: 0.3s;
