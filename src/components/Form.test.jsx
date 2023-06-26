@@ -86,16 +86,6 @@ describe("Form selector", () => {
     // ***** On demande à executer la balise Form
     render(<Form />);
 
-    // l'utilisateur saisie les valeurs
-    await (() => {
-      userEvent.type(screen.getByLabelText("Titre"), "mon titre");
-      userEvent.selectOptions(
-        screen.getByLabelText("combobox", { name: "Catégorie" }),
-        "Ambassadeurs"
-      );
-      userEvent.type(screen.getByLabelText("Date"), "1900-01-01");
-    });
-
     // l'utilisateur clique sur le button envoyer
     await userEvent.click(screen.getByRole("button"));
 
